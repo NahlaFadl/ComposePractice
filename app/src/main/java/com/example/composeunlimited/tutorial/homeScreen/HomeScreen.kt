@@ -13,21 +13,32 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.composeunlimited.R
 import com.example.composeunlimited.tutorial.postCard.PostCard
 import com.example.composeunlimited.tutorial.postCard.titleStyle
 import com.example.composeunlimited.tutorial.story.StoryCircle
-import com.example.composeunlimited.tutorial.story.stories
 import com.example.composeunlimited.tutorial.style.OutlineButton
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(viewModel: HomeViewModel = viewModel()) {
+    val state: HomeScreenState by viewModel.state.collectAsStateWithLifecycle()
+    HomeContent(state)
+}
+
+@Composable
+fun HomeContent(
+    state: HomeScreenState
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -41,7 +52,7 @@ fun HomeScreen() {
                 contentPadding = PaddingValues(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                items(stories) { story ->
+                items(state.stories) { story ->
                     StoryCircle(
                         profilePicture = painterResource(story.profilePicture),
                         isSeen = story.isSeen
@@ -62,13 +73,14 @@ fun HomeScreen() {
             BasicText(
                 text = "Lastest Post",
                 style = titleStyle.copy(color = Color.Black, fontSize = 20.sp),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .background(color = Color(0xFFF4F4F4))
                     .padding(16.dp)
             )
         }
 
-        items(feed) { post ->
+        items(state.posts) { post ->
             PostCard(
                 painter = painterResource(post.postImg),
                 profile = painterResource(post.profileImage),

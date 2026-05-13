@@ -1,6 +1,5 @@
-package com.example.composeunlimited.tutorial.state
+package com.example.composeunlimited.tutorial.basicExample
 
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow

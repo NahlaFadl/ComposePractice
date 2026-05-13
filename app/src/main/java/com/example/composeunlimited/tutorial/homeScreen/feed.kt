@@ -4,7 +4,8 @@ import androidx.compose.ui.res.painterResource
 import com.example.composeunlimited.R
 import com.example.composeunlimited.tutorial.postCard.PostCard
 
-val feed = listOf<Post>(
+fun getFeed() = feedItems
+val feedItems = listOf<Post>(
     Post(
         postImg = R.drawable.brid,
         profileImage = R.drawable.ic_launcher_background,

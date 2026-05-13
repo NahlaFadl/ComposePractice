@@ -18,7 +18,7 @@ fun StorySection() {
         contentPadding = PaddingValues(16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        items(stories) { story ->
+        items(storiesItems) { story ->
             StoryCircle(
                 profilePicture = painterResource(story.profilePicture),
                 isSeen = story.isSeen
