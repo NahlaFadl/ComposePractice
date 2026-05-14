@@ -1,12 +1,13 @@
 package com.example.composeunlimited.tutorial.homeScreen
 
 import androidx.lifecycle.ViewModel
+import com.example.composeunlimited.tutorial.story.Story
 import com.example.composeunlimited.tutorial.story.getStories
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel : ViewModel(), HomeScreenInteractionListener {
     private val _state: MutableStateFlow<HomeScreenState> = MutableStateFlow(HomeScreenState())
     val state: StateFlow<HomeScreenState> = _state
 
@@ -30,6 +31,18 @@ class HomeViewModel : ViewModel() {
                 oldPosts.copy(posts = postsResponse)
             }
         }
+    }
+
+    override fun onClickStory(story: Story) {
+//        TODO("Not yet implemented")
+    }
+
+    override fun onClickPost(post: Post) {
+//        TODO("Not yet implemented")
+    }
+
+    override fun onClickCreatePost() {
+//        TODO("Not yet implemented")
     }
 
 }

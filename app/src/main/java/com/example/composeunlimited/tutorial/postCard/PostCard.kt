@@ -28,7 +28,8 @@ fun PostCard(
     profile: Painter,
     publishName: String,
     publishDate: String,
-    content: String
+    content: String,
+    onLikeClick: () -> Unit = {}
 ) {
 
     Card(modifier = modifier) {

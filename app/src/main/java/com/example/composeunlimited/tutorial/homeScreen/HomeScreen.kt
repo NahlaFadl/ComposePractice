@@ -32,12 +32,13 @@ import com.example.composeunlimited.tutorial.style.OutlineButton
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = viewModel()) {
     val state: HomeScreenState by viewModel.state.collectAsStateWithLifecycle()
-    HomeContent(state)
+    HomeContent(state, viewModel)
 }
 
 @Composable
 fun HomeContent(
-    state: HomeScreenState
+    state: HomeScreenState,
+    listener: HomeScreenInteractionListener
 ) {
     LazyColumn(
         modifier = Modifier
@@ -56,13 +57,15 @@ fun HomeContent(
                     StoryCircle(
                         profilePicture = painterResource(story.profilePicture),
                         isSeen = story.isSeen
-                    ) { }
+                    ) {
+                        listener.onClickStory(story)
+                    }
                 }
             }
         }
         item {
             OutlineButton(
-                onClick = {},
+                onClick = { listener.onClickCreatePost() },
                 caption = "Click me",
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
@@ -88,7 +91,9 @@ fun HomeContent(
                 publishDate = post.publishDate,
                 content = post.content,
                 modifier = Modifier.padding(horizontal = 16.dp)
-            )
+            ) {
+                listener.onClickPost(post)
+            }
         }
     }
 }
