@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.composeunlimited.tutorial.basicExample.ExpendableText
 import com.example.composeunlimited.tutorial.basicExample.Test
+import com.example.composeunlimited.tutorial.composeEffect.SomeUI
 import com.example.composeunlimited.tutorial.homeScreen.HomeScreen
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +18,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            HomeScreen()
+            SomeUI()
+//            HomeScreen()
 //            ExpendableText(
 //                text = " tekdjkdjskjdsa \n kjsdakjsdkljsdak \n ljslkjsfdklfjsdkfjds \n kfdjskldsfjksfdj"
 //            )
