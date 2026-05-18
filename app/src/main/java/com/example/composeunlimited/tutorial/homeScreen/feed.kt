@@ -7,6 +7,7 @@ import com.example.composeunlimited.tutorial.postCard.PostCard
 fun getFeed() = feedItems
 val feedItems = listOf<Post>(
     Post(
+        id = 1,
         postImg = R.drawable.brid,
         profileImage = R.drawable.ic_launcher_background,
         publishName = "nala1",
@@ -14,6 +15,7 @@ val feedItems = listOf<Post>(
         content = "post1"
     ),
     Post(
+        id = 2,
         postImg = R.drawable.brid,
         profileImage = R.drawable.ic_launcher_foreground,
         publishName = "nala2",
@@ -21,6 +23,7 @@ val feedItems = listOf<Post>(
         content = "post2"
     ),
     Post(
+        id = 3,
         postImg = R.drawable.brid,
         profileImage = R.drawable.brid,
         publishName = "nala3",
@@ -28,6 +31,7 @@ val feedItems = listOf<Post>(
         content = "post3"
     ),
     Post(
+        id = 4,
         postImg = R.drawable.ic_launcher_background,
         profileImage = R.drawable.ic_launcher_background,
         publishName = "nala4",
@@ -35,6 +39,7 @@ val feedItems = listOf<Post>(
         content = "post4"
     ),
     Post(
+        id = 5,
         postImg = R.drawable.ic_launcher_background,
         profileImage = R.drawable.brid,
         publishName = "nala5",

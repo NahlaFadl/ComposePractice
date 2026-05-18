@@ -13,6 +13,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -32,6 +33,15 @@ import com.example.composeunlimited.tutorial.style.OutlineButton
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = viewModel()) {
     val state: HomeScreenState by viewModel.state.collectAsStateWithLifecycle()
+    LaunchedEffect(Unit) {
+        viewModel.effect.collect { effect ->
+            when (effect) {
+                HomeSideEffect.GoToCreatePostScreen -> TODO()
+                is HomeSideEffect.ShowPostDetails -> TODO()
+                is HomeSideEffect.ShowStory -> TODO()
+            }
+        }
+    }
     HomeContent(state, viewModel)
 }
 
