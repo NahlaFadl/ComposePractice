@@ -18,8 +18,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-//            SomeUI()
-            HomeScreen()
+            SomeUI()
+//            HomeScreen()
 //            ExpendableText(
 //                text = " tekdjkdjskjdsa \n kjsdakjsdkljsdak \n ljslkjsfdklfjsdkfjds \n kfdjskldsfjksfdj"
 //            )

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -22,19 +23,25 @@ fun SomeUI(
     var state by remember { mutableIntStateOf(0) }
     var topPadding by remember { mutableIntStateOf(0) }
 
-    LaunchedEffect(Unit) {
+//    LaunchedEffect(Unit) {
+//        doSomethingLogic()
+//        for (i in 1..200){
+//            delay(50)
+//            topPadding++
+//        }
+//    }
+
+    SideEffect {
         doSomethingLogic()
-        for (i in 1..200){
-            delay(50)
-            topPadding++
-        }
     }
     BasicText(
         text = state.toString(),
         style = myStyle,
         modifier = modifier
             .fillMaxWidth()
-            .padding( topPadding.dp).clickable { state++ }
+            .padding(50.dp)
+//            .padding( topPadding.dp)
+            .clickable { state++ }
     )
 }
 
