@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
@@ -31,9 +32,18 @@ fun SomeUI(
 //        }
 //    }
 
-    SideEffect {
+//    SideEffect {
+//        doSomethingLogic()
+//    }
+
+    DisposableEffect(Unit) {
         doSomethingLogic()
+
+        onDispose {
+            closeCollBack()
+        }
     }
+
     BasicText(
         text = state.toString(),
         style = myStyle,
@@ -47,4 +57,7 @@ fun SomeUI(
 
 fun doSomethingLogic() {
     println("fetch data")
+}
+fun closeCollBack() {
+    println("close")
 }
