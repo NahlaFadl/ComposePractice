@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -29,6 +30,7 @@ import com.example.composeunlimited.tutorial.postCard.PostCard
 import com.example.composeunlimited.tutorial.postCard.titleStyle
 import com.example.composeunlimited.tutorial.story.StoryCircle
 import com.example.composeunlimited.tutorial.style.OutlineButton
+import kotlinx.coroutines.delay
 
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = viewModel()) {
@@ -50,12 +52,20 @@ fun HomeContent(
     state: HomeScreenState,
     listener: HomeScreenInteractionListener
 ) {
+    val homeListState= rememberLazyListState()
+
+    LaunchedEffect(Unit) {
+        delay(3000)
+        homeListState.animateScrollToItem(4)
+    }
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFF4F4F4)),
         contentPadding = PaddingValues(vertical = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        state = homeListState
     ) {
         item {
             LazyRow(
