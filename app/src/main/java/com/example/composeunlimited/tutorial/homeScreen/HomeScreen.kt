@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -57,6 +58,13 @@ fun HomeContent(
     LaunchedEffect(Unit) {
         delay(3000)
         homeListState.animateScrollToItem(4)
+    }
+
+    LaunchedEffect(Unit) {
+        snapshotFlow { homeListState.firstVisibleItemIndex}
+            .collect {
+                println("collecting list state is $it")
+            }
     }
 
     LazyColumn(

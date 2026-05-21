@@ -12,6 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.composeunlimited.tutorial.style.myStyle
@@ -36,11 +37,17 @@ fun SomeUI(
 //        doSomethingLogic()
 //    }
 
-    DisposableEffect(Unit) {
-        doSomethingLogic()
+//    DisposableEffect(Unit) {
+//        doSomethingLogic()
+//
+//        onDispose {
+//            closeCollBack()
+//        }
+//    }
 
-        onDispose {
-            closeCollBack()
+    LaunchedEffect(Unit) {
+        snapshotFlow { state }.collect {
+            println("current number state is $it")
         }
     }
 
